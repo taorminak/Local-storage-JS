@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Опросник владельцев котов</title>
+  </head>
+  <body>
+    <h1>Опросник</h1>
+    <div>
+      <label for="nickname">Кличка питомца:</label>
+      <input type="text" id="nickname" minlength="2" maxlength="10" required />
+    </div>
+    <div>
+      <label for="name">Имя владельца:</label>
+      <input type="text" id="name" minlength="3" maxlength="40" required pattern="^[А-Яа-яЁё\s]+$" />
+    </div>
+    <div>
+      <label for="phone">Телефон владельца:</label>
+      <input type="number" id="phone" minlength="6" maxlength="12" required />
+    </div>
+    <div>
+      <div>Выберите породу:</div>
+      <select required>
+        <option value="1">Мейн-кун</option>
+        <option value="2">Персидская</option>
+        <option value="3">Сиамская</option>
+        <option value="4">Сибирская</option>
+        <option value="5">Шотландская</option>
+        <option value="6">Канадский сфинкс</option>
+        <option value="7">Бенгальская</option>
+        <option value="8">Британская</option>
+        <option value="9">Тайская</option>
+        <option value="10">Другая</option>
+      </select>
+    </div>
+    <div>
+      <div>Тип корма:</div>
+      Влажный <input type="checkbox" id="wet" />Сухой<input
+        type="checkbox"
+        id="dry"
+      />Натуральный<input type="checkbox" id="natural" />
+    </div>
+    <div>
+      <div>Пол животного:</div>
+      Самец <input type="radio" required name="sex" /><br />Самка<input
+        type="radio"
+        required
+        name="sex"
+      />
+    </div>
+    <div>
+      <div>Оставьте ваш комментарий:</div>
+      <textarea rows="10"></textarea>
+    </div>
+    <div>
+      <label for="picture">Фото питомца:</label>
+      <input type="file" id="picture" required />
+    </div>
+    <div><button>Сохранить</button></div>
+
+    <style>
+      body {
+        display: inline-block;
+        background-color: beige;
+        font-size: 14pt;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      }
+
+      input:valid {
+        border: 1px solid lightgreen;
+      }
+    </style>
+  </body>
+</html>
