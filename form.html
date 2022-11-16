@@ -153,10 +153,6 @@
         if (validity.stepMismatch) {
           errors.push("Значение не соответствует указаному шагу");
         }
-
-
-        console.log (errors);
-
         
       }
 
@@ -170,7 +166,6 @@
         let errorDiv = document.querySelector(".errorsInfo");
         const r = errors.map(item => `${item}.<br>`)
         errorDiv.innerHTML = r.join(" \n ");
-        console.log (errors.join(`. \n`));
         
       }
 
