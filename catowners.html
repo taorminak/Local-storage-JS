@@ -8,17 +8,18 @@
   </head>
   <body>
     <h1>Опросник</h1>
+    <form>
     <div>
       <label for="nickname">Кличка питомца:</label>
-      <input type="text" id="nickname" minlength="2" maxlength="10" required />
+      <input type="text" id="nickname" minlength="2" maxlength="10" required />*
     </div>
     <div>
       <label for="name">Имя владельца:</label>
-      <input type="text" id="name" minlength="3" maxlength="40" required pattern="^[А-Яа-яЁё\s]+$" />
+      <input type="text" id="name" minlength="3" maxlength="40" required pattern="^[А-Яа-яЁё\s]+$" />*
     </div>
     <div>
       <label for="phone">Телефон владельца:</label>
-      <input type="number" id="phone" minlength="6" maxlength="12" required />
+      <input type="number" id="phone" minlength="6" maxlength="12" required />*
     </div>
     <div>
       <div>Выберите породу:</div>
@@ -43,7 +44,7 @@
       />Натуральный<input type="checkbox" id="natural" />
     </div>
     <div>
-      <div>Пол животного:</div>
+      <div>Пол животного:*</div>
       Самец <input type="radio" required name="sex" /><br />Самка<input
         type="radio"
         required
@@ -58,7 +59,7 @@
       <label for="picture">Фото питомца:</label>
       <input type="file" id="picture" required />
     </div>
-    <div><button>Сохранить</button></div>
+    <div><button>Сохранить</button></div></form>
 
     <style>
       body {
