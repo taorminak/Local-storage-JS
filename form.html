@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles/styles.css" />
+  </head>
+  <body>
+    <form>
+    <div class="form">
+      <div class="form__container">
+        <div class="container_colored">
+          <form class="container">
+            <span class="container__logo">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+
+            <span class="container__title"> Sign up </span>
+            <div class="errorsInfo"></div>
+
+            <div class="container__input_user">
+              <div class="container__icon">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </div>
+              <input
+                class="input-text"
+                type="text"
+                id="name"
+                name="full-name"
+                placeholder="Full Name" required  pattern="^[a-zA-Z\s.,]+$"
+              />
+            </div>
+
+            <div class="container__input_user">
+              <div class="container__icon">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </div>
+              <input
+                class="input-text"
+                type="text"
+                id="e-mail"
+                name="e-mail"
+                placeholder="E-mail" required pattern="[A-Za-z]{6,}"
+              />
+            </div>
+
+            <div class="container__input_user">
+              <div class="container__icon">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </div>
+              <input
+                class="input-text"
+                type="password"
+                id="password"
+                name="pass"
+                placeholder="Password" required
+              />
+            </div>
+
+            <div class="container__input_user">
+              <div class="container__icon">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              </div>
+              <input
+                class="input-text"
+                type="password"
+                id="confirm-pass"
+                name="pass"
+                placeholder="Repeat password" required
+              />
+            </div>
+
+            <div class="container__input_user">
+              <div class="container__icon">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+              </div>
+              <input
+                class="input-text"
+                type="number"
+                id="phone"
+                name="phone"
+                placeholder="Phone" required minlength="6" pattern="[0-9]{6,10}"
+              />
+            </div>
+
+            <div class="form__checkbox">
+              <input
+                class="checkbox__input"
+                id="ckb1"
+                type="checkbox"
+                name="remember-me"
+              />
+              <label class="checkbox-label" for="ckb1"> Remember me </label>
+            </div>
+            <div id="message"></div>
+            <div class="container__login">
+              <button class="container__button" onclick="myFunction(event)">
+                Sign up
+              </button>
+            </div>
+
+            <div class="container__text">
+              <a class="txt1" href="#">
+                Already a member? <span>Log in</span>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div></form>
+
+    <script>
+      let errors = [];
+      function checkValidity(input) {
+        let validity = input.validity;
+
+        if (validity.patternMismatch) {
+          errors.push("Неверный формат заполнения");
+        }
+
+        if (validity.rangeOverflow) {
+          let max = input.max;
+          errors.push("Максимальное значение не может быть больше чем " + max);
+        }
+
+        if (validity.rangeUnderflow) {
+          let min = input.min;
+          errors.push("Минимальное значение не может быть больше чем " + min);
+        }
+
+        if (validity.tooLong) {
+          errors.push("Значение слишком длинное");
+        }
+
+        if (validity.tooShort) {
+          errors.push("Значение слишком короткое");
+        }
+
+        if (validity.typeMismatch) {
+          errors.push("Значение не соответствует указаному атрибуту type");
+        }
+
+        if (validity.valueMissing) {
+          errors.push("Отсутствует обязательное значение");
+        }
+
+        if (validity.stepMismatch) {
+          errors.push("Значение не соответствует указаному шагу");
+        }
+
+
+        console.log (errors);
+
+        
+      }
+
+      function checkAll() {
+        let inputs = document.querySelectorAll("input");
+
+        for (let input of inputs) {
+          checkValidity(input);
+        }
+
+        let errorDiv = document.querySelector(".errorsInfo");
+        const r = errors.map(item => `${item}.<br>`)
+        errorDiv.innerHTML = r.join(" \n ");
+        console.log (errors.join(`. \n`));
+        
+      }
+
+      document.querySelector(".errorsInfo") == "";
+
+      function myFunction(e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name");
+        let email = document.getElementById("e-mail");
+        let password = document.getElementById("password");
+        let confirmPass = document.getElementById("confirm-pass");
+        let phone = document.getElementById("phone");
+
+        document.getElementById("message").innerHTML = "";
+
+        if (name.value == "") {
+          document.getElementById("message").innerHTML +=
+            "You need to provide your name<br>";
+        }
+        if (email.value == "") {
+          document.getElementById("message").innerHTML +=
+            "You need to provide your email<br>";
+        }
+        if (password.value == "") {
+          document.getElementById("message").innerHTML +=
+            "You need to provide your password<br>";
+        }
+        if (confirmPass.value == "") {
+          document.getElementById("message").innerHTML +=
+            "You need to repeat your password<br>";
+        }
+        if (phone.value == "") {
+          document.getElementById("message").innerHTML +=
+            "You need to provide your phone<br>";
+        } else {
+          let name = document.getElementById("name").value;
+          let greeting = "Hello, " + name + "!";
+          document.getElementById("message").innerHTML = greeting;
+          document.getElementById("message").style.color = "white";
+        }
+
+        checkAll();
+      }
+    </script>
+  </body>
+</html>
