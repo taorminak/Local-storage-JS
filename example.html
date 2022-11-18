@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="question">How are you today?</div>
+      <div id="result"></div>
+      <br />
+
+      <div>
+        <form action="./" method="post">
+          <div>Choose picture by clicking</div>
+          <a href="https://www.google.com/"><img class="picture" src="https://n1s1.hsmedia.ru/85/64/3f/85643f2e03be52b0bc00cb0f60b12f31/728x546_1_76d11b54618da2bff71c051801a697db@1441x1081_0xac120003_18866572441655464119.jpeg" width="170" height="120" alt="picture"></a>
+          <input type="text" class="name" placeholder="Name" required><br />
+          <label for="comment">Leave your comment below</label><br />
+          <textarea required name="comment" id="comment"></textarea><br />
+
+          <button type="submit" class="btn" onclick="addComment(event)">
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      .container {
+        display: inline-block;
+        background-color: beige;
+        height: 100%;
+        width: 100%;
+      }
+      .container > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .question {
+        margin: 50px;
+        border-bottom: 1px solid grey;
+      }
+      * {
+        font-size: 16pt;
+      }
+      .btn {
+        background-color: orange;
+        width: 100%;
+      }
+
+      .name { width: 100%;}
+    </style>
+
+    <script>
+      let comments = [];
+
+      function addComment(e) {
+        e.preventDefault();
+
+        let comment = document.getElementById("comment").value;
+        document.getElementById("comment").value = "";
+        comments.push(comment);
+
+
+
+        checkSpam();
+        
+      }
+
+       document.addEventListener("DOMContentLoaded", function () {
+        checkSpam();
+      });
+
+    
+
+      function checkSpam() {
+
+        let result = comments.map(function (x) {
+          return x.replaceAll(/viagra/ig, "***").replaceAll(/xxx/ig, "***");
+        });
+
+        let b = result.map (item => `${item} <br>`);
+        document.getElementById("result").innerHTML = b.join("");
+
+}
+
+
+    </script>
+  </body>
+</html>
