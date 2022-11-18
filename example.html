@@ -58,19 +58,7 @@
     </style>
 
     <script>
-      let button = document.getElementById("button");
-      button.addEventListener ('click', function (event) {
-        let imageurl = document.getElementById("url").value;
-
-        let img = document.createElement("img");
-
-        img.src = imageurl;
-        img.style.height = "100px";
-
-        document.getElementById("picture").appendChild(img);
-
-        document.getElementById("url").value = "";
-      });
+     
 
 
 
@@ -80,9 +68,22 @@
       function addComment(e) {
         e.preventDefault();
 
-        let comment = document.getElementById("comment").value;
+        let imageurl = document.getElementById("url").value;
+
+        let img = document.createElement("img");
+
+        img.src = imageurl;
+        img.style.height = "100px";
+
+        document.getElementById("url").value = "";
+        let pic = document.body.appendChild(img);
+      
+        let comment = pic + document.getElementById("name").value + ": " + document.getElementById("comment").value;
         document.getElementById("comment").value = "";
+        document.getElementById("name").value = "";
         comments.push(comment);
+
+        console.log (comment)
 
 
 
@@ -102,10 +103,10 @@
           return x.replaceAll(/viagra/ig, "***").replaceAll(/xxx/ig, "***");
         });
 
-        let name = document.getElementById("name").value;
+        
 
         let result = check.map (item => `${item} <br>`);
-        document.getElementById("result").innerHTML = name + ": " + result.join("");
+        document.getElementById("result").innerHTML = result.join("");
 
 }
 
