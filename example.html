@@ -14,9 +14,11 @@
 
       <div>
         <form action="./" method="post">
-          <div>Choose picture by clicking</div>
-          <a href="https://www.google.com/"><img class="picture" src="https://n1s1.hsmedia.ru/85/64/3f/85643f2e03be52b0bc00cb0f60b12f31/728x546_1_76d11b54618da2bff71c051801a697db@1441x1081_0xac120003_18866572441655464119.jpeg" width="170" height="120" alt="picture"></a>
-          <input type="text" class="name" placeholder="Name" required><br />
+          <div>Choose picture by adding url</div>
+          <div class="profile-picture" id="picture"></div>
+          <input id="url" type="url" placeholder="url">
+          <button id="button"> Display image</button>
+          <input type="text" class="name" id="name" placeholder="Name" required><br />
           <label for="comment">Leave your comment below</label><br />
           <textarea required name="comment" id="comment"></textarea><br />
 
@@ -51,10 +53,28 @@
         width: 100%;
       }
 
-      .name { width: 100%;}
+      .name { width: 100%;};
+
     </style>
 
     <script>
+      let button = document.getElementById("button");
+      button.addEventListener ('click', function (event) {
+        let imageurl = document.getElementById("url").value;
+
+        let img = document.createElement("img");
+
+        img.src = imageurl;
+        img.style.height = "100px";
+
+        document.getElementById("picture").appendChild(img);
+
+        document.getElementById("url").value = "";
+      });
+
+
+
+
       let comments = [];
 
       function addComment(e) {
@@ -78,12 +98,14 @@
 
       function checkSpam() {
 
-        let result = comments.map(function (x) {
+        let check = comments.map(function (x) {
           return x.replaceAll(/viagra/ig, "***").replaceAll(/xxx/ig, "***");
         });
 
-        let b = result.map (item => `${item} <br>`);
-        document.getElementById("result").innerHTML = b.join("");
+        let name = document.getElementById("name").value;
+
+        let result = check.map (item => `${item} <br>`);
+        document.getElementById("result").innerHTML = name + ": " + result.join("");
 
 }
 
