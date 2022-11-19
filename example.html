@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <div class="question">How are you today?</div>
-      <div id="result"></div>
+      <div class="result" id="result"></div>
       <br />
 
       <div>
@@ -17,7 +17,7 @@
           <div>Choose picture by adding url</div>
           <div class="profile-picture" id="picture"></div>
           <input id="url" type="url" placeholder="url">
-          <button id="button"> Display image</button>
+          
           <input type="text" class="name" id="name" placeholder="Name" required><br />
           <label for="comment">Leave your comment below</label><br />
           <textarea required name="comment" id="comment"></textarea><br />
@@ -55,60 +55,55 @@
 
       .name { width: 100%;};
 
+
     </style>
 
     <script>
      
-
-
-
 
       let comments = [];
 
       function addComment(e) {
         e.preventDefault();
 
-        let imageurl = document.getElementById("url").value;
+        const imageUrl = document.getElementById("url").value;
+        const commentAuthor = document.getElementById("name").value; 
+        const commentText = document.getElementById("comment").value;
 
-        let img = document.createElement("img");
 
-        img.src = imageurl;
+        const commentWrap = document.createElement('div');
+        const authorWrap = document.createElement('div');
+        const commentTextWrap = document.createElement('div');
+        const author = document.createElement('span');
+        const img = document.createElement("img");
+
+        commentWrap.classList.add('comment');
+        authorWrap.classList.add('comment__author');
+        commentTextWrap.classList.add('comment__text');
+        img.classList.add('comment__avatar');
+
+
+        img.src = imageUrl;
         img.style.height = "100px";
 
+        commentTextWrap.innerHTML = commentText;
+        author.innerHTML = commentAuthor;
+        authorWrap.appendChild(img);
+        authorWrap.appendChild(author);
+        commentWrap.appendChild(authorWrap);
+        commentWrap.appendChild(commentTextWrap);
+
         document.getElementById("url").value = "";
-        let pic = document.body.appendChild(img);
-      
-        let comment = pic + document.getElementById("name").value + ": " + document.getElementById("comment").value;
         document.getElementById("comment").value = "";
         document.getElementById("name").value = "";
         comments.push(comment);
+       
 
-        console.log (comment)
-
-
-
-        checkSpam();
+        document.getElementById('result').appendChild(commentWrap);
+        
         
       }
-
-       document.addEventListener("DOMContentLoaded", function () {
-        checkSpam();
-      });
-
-    
-
-      function checkSpam() {
-
-        let check = comments.map(function (x) {
-          return x.replaceAll(/viagra/ig, "***").replaceAll(/xxx/ig, "***");
-        });
-
-        
-
-        let result = check.map (item => `${item} <br>`);
-        document.getElementById("result").innerHTML = result.join("");
-
-}
+      
 
 
     </script>
