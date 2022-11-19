@@ -145,39 +145,40 @@
         
         if (!validity.patternMismatch) {
           showErrorMessage(input, 'Неверный формат заполнения');
-          //errors.push("Неверный формат заполнения");
+      
         }
 
         if (!validity.rangeOverflow) {
           let max = input.max;
 
           showErrorMessage(input, "Максимальное значение не может быть больше чем " + max);
-          //errors.push("Максимальное значение не может быть больше чем " + max);
+        
         }
 
-        if (validity.rangeUnderflow) {
+        if (!validity.rangeUnderflow) {
           let min = input.min;
-          errors.push("Минимальное значение не может быть больше чем " + min);
+          showErrorMessage(input, "Минимальное значение не может быть меньше чем " + max);
         }
 
-        if (validity.tooLong) {
-          errors.push("Значение слишком длинное");
+        if (!validity.tooLong) {
+          showErrorMessage(input, "Значение слишком длинное");
         }
 
-        if (validity.tooShort) {
-          errors.push("Значение слишком короткое");
+        if (!validity.tooShort) {
+          showErrorMessage(input, "Значение слишком короткое");
         }
 
-        if (validity.typeMismatch) {
-          errors.push("Значение не соответствует указаному атрибуту type");
+        if (!validity.typeMismatch) {
+          showErrorMessage(input, "Значение не соответствует указаному атрибуту type");
+          
         }
 
-        if (validity.valueMissing) {
-          errors.push("Отсутствует обязательное значение");
+        if (!validity.valueMissing) {
+          showErrorMessage(input, "Отсутствует обязательное значение");
         }
 
         if (validity.stepMismatch) {
-          errors.push("Значение не соответствует указаному шагу");
+          showErrorMessage(input, "Значение не соответствует указаному шагу");
         }
         
       }
