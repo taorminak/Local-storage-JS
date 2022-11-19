@@ -22,7 +22,7 @@
               </span>
 
               <span class="container__title"> Sign up </span>
-              <div class="errorsInfo"></div>
+          
 
               <div class="container__input_user">
                 <div class="container__icon">
@@ -96,6 +96,7 @@
                   pattern="/^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/"
                   minlength="10"
                   maxlength="20"
+                  max = 10;
                 />
               </div>
 
@@ -135,30 +136,15 @@
 
         el.after(div);
         el.classList.add("error-input");
+      
       };
+
 
       function checkValidity(input) {
         let validity = input.validity;
 
         if (!validity.patternMismatch) {
           showErrorMessage(input, "Неверный формат заполнения");
-        }
-
-        if (!validity.rangeOverflow) {
-          let max = input.max;
-
-          showErrorMessage(
-            input,
-            "Максимальное значение не может быть больше чем " + max
-          );
-        }
-
-        if (!validity.rangeUnderflow) {
-          let min = input.min;
-          showErrorMessage(
-            input,
-            "Минимальное значение не может быть меньше чем " + max
-          );
         }
 
         if (!validity.tooLong) {
@@ -183,7 +169,13 @@
         if (validity.stepMismatch) {
           showErrorMessage(input, "Значение не соответствует указаному шагу");
         }
+
+       // let clear = document.querySelectorAll('.error-input');
+      //clear.forEach( e => e.remove() ); - не срабатывает должным образом
+
       }
+
+    
 
       function checkAll() {
         let inputs = document.querySelectorAll("input");
@@ -192,12 +184,9 @@
           checkValidity(input);
         }
 
-        let errorDiv = document.querySelector(".errorsInfo");
-        const r = errors.map((item) => `${item}.<br>`);
-        errorDiv.innerHTML = r.join(" \n ");
+      
       }
-
-      document.querySelector(".errorsInfo") == "";
+     
 
       function myFunction(e) {
         e.preventDefault();
@@ -237,7 +226,10 @@
         }
 
         checkAll();
+        
       }
+
+      
     </script>
   </body>
 </html>
