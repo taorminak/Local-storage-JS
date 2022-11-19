@@ -155,3 +155,12 @@ button:hover {
   .txt1 span { font-weight: bold;}
 
   #message { color: red;}
+
+  .error-message {
+    color: red;
+    padding: 3px 0 15px;
+  }
+
+  .error-input {
+    border-color: red;
+  }
