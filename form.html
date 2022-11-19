@@ -10,154 +10,155 @@
       href="/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
     />
     <link type="" rel="stylesheet" href="assets/styles/styles.css" />
-    <style>
-      .error-message {
-        color: red;
-        padding: 3px 0 15px;
-      }
-
-      .error-input {
-        border-color: red;
-      }
-    </style>
   </head>
   <body>
     <form>
-    <div class="form">
-      <div class="form__container">
-        <div class="container_colored">
-          <form class="container">
-            <span class="container__logo">
-              <i class="fa fa-user" aria-hidden="true"></i>
-            </span>
-
-            <span class="container__title"> Sign up </span>
-            <div class="errorsInfo"></div>
-
-            <div class="container__input_user">
-              <div class="container__icon">
+      <div class="form">
+        <div class="form__container">
+          <div class="container_colored">
+            <form class="container">
+              <span class="container__logo">
                 <i class="fa fa-user" aria-hidden="true"></i>
+              </span>
+
+              <span class="container__title"> Sign up </span>
+              <div class="errorsInfo"></div>
+
+              <div class="container__input_user">
+                <div class="container__icon">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <input
+                  class="input-text"
+                  type="text"
+                  id="name"
+                  name="full-name"
+                  placeholder="Full Name"
+                  required
+                  pattern="^[a-zA-Z\s.,]+$"
+                />
               </div>
-              <input
-                class="input-text"
-                type="text"
-                id="name"
-                name="full-name"
-                placeholder="Full Name" required  pattern="^[a-zA-Z\s.,]+$"
-              />
-            </div>
 
-            <div class="container__input_user">
-              <div class="container__icon">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
+              <div class="container__input_user">
+                <div class="container__icon">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                </div>
+                <input
+                  class="input-text"
+                  type="text"
+                  id="e-mail"
+                  name="e-mail"
+                  placeholder="E-mail"
+                  required
+                  pattern="/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/"
+                />
               </div>
-              <input
-                class="input-text"
-                type="text"
-                id="e-mail"
-                name="e-mail"
-                placeholder="E-mail" required pattern="/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/"
-              />
-            </div>
 
-            <div class="container__input_user">
-              <div class="container__icon">
-                <i class="fa fa-lock" aria-hidden="true"></i>
+              <div class="container__input_user">
+                <div class="container__icon">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </div>
+                <input
+                  class="input-text"
+                  type="password"
+                  id="password"
+                  name="pass"
+                  placeholder="Password"
+                  required
+                />
               </div>
-              <input
-                class="input-text"
-                type="password"
-                id="password"
-                name="pass"
-                placeholder="Password" required
-              />
-            </div>
 
-            <div class="container__input_user">
-              <div class="container__icon">
-                <i class="fa fa-lock" aria-hidden="true"></i>
+              <div class="container__input_user">
+                <div class="container__icon">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                </div>
+                <input
+                  class="input-text"
+                  type="password"
+                  id="confirm-pass"
+                  name="pass"
+                  placeholder="Repeat password"
+                  required
+                />
               </div>
-              <input
-                class="input-text"
-                type="password"
-                id="confirm-pass"
-                name="pass"
-                placeholder="Repeat password" required
-              />
-            </div>
 
-            <div class="container__input_user">
-              <div class="container__icon">
-                <i class="fa fa-phone" aria-hidden="true"></i>
+              <div class="container__input_user">
+                <div class="container__icon">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                </div>
+                <input
+                  class="input-text"
+                  type="number"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone"
+                  required
+                  pattern="/^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/"
+                  minlength="10"
+                  maxlength="20"
+                />
               </div>
-              <input
-                class="input-text"
-                type="number"
-                id="phone"
-                name="phone"
-                placeholder="Phone" 
-                required 
-                pattern="/^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/" 
-                minlength="10" 
-                maxlength="20" 
-              />
-            </div>
 
-            <div class="form__checkbox">
-              <input
-                class="checkbox__input"
-                id="ckb1"
-                type="checkbox"
-                name="remember-me"
-              />
-              <label class="checkbox-label" for="ckb1"> Remember me </label>
-            </div>
-            <div id="message"></div>
-            <div class="container__login">
-              <button class="container__button" onclick="myFunction(event)">
-                Sign up
-              </button>
-            </div>
+              <div class="form__checkbox">
+                <input
+                  class="checkbox__input"
+                  id="ckb1"
+                  type="checkbox"
+                  name="remember-me"
+                />
+                <label class="checkbox-label" for="ckb1"> Remember me </label>
+              </div>
+              <div id="message"></div>
+              <div class="container__login">
+                <button class="container__button" onclick="myFunction(event)">
+                  Sign up
+                </button>
+              </div>
 
-            <div class="container__text">
-              <a class="txt1" href="#">
-                Already a member? <span>Log in</span>
-              </a>
-            </div>
-          </form>
+              <div class="container__text">
+                <a class="txt1" href="#">
+                  Already a member? <span>Log in</span>
+                </a>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div></form>
+    </form>
 
     <script>
       let errors = [];
       const showErrorMessage = (el, message) => {
         let div = document.createElement("div");
         div.innerHTML = message;
-        div.classList.add('error-message');
+        div.classList.add("error-message");
 
         el.after(div);
-        el.classList.add('error-input');
-      }
+        el.classList.add("error-input");
+      };
 
       function checkValidity(input) {
         let validity = input.validity;
-        
+
         if (!validity.patternMismatch) {
-          showErrorMessage(input, 'Неверный формат заполнения');
-      
+          showErrorMessage(input, "Неверный формат заполнения");
         }
 
         if (!validity.rangeOverflow) {
           let max = input.max;
 
-          showErrorMessage(input, "Максимальное значение не может быть больше чем " + max);
-        
+          showErrorMessage(
+            input,
+            "Максимальное значение не может быть больше чем " + max
+          );
         }
 
         if (!validity.rangeUnderflow) {
           let min = input.min;
-          showErrorMessage(input, "Минимальное значение не может быть меньше чем " + max);
+          showErrorMessage(
+            input,
+            "Минимальное значение не может быть меньше чем " + max
+          );
         }
 
         if (!validity.tooLong) {
@@ -169,8 +170,10 @@
         }
 
         if (!validity.typeMismatch) {
-          showErrorMessage(input, "Значение не соответствует указаному атрибуту type");
-          
+          showErrorMessage(
+            input,
+            "Значение не соответствует указаному атрибуту type"
+          );
         }
 
         if (!validity.valueMissing) {
@@ -180,7 +183,6 @@
         if (validity.stepMismatch) {
           showErrorMessage(input, "Значение не соответствует указаному шагу");
         }
-        
       }
 
       function checkAll() {
@@ -191,9 +193,8 @@
         }
 
         let errorDiv = document.querySelector(".errorsInfo");
-        const r = errors.map(item => `${item}.<br>`)
+        const r = errors.map((item) => `${item}.<br>`);
         errorDiv.innerHTML = r.join(" \n ");
-        
       }
 
       document.querySelector(".errorsInfo") == "";
