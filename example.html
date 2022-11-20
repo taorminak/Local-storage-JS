@@ -22,6 +22,8 @@
           <label for="comment">Leave your comment below</label><br />
           <textarea required name="comment" id="comment"></textarea><br />
 
+          <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
+
           <button type="submit" class="btn" onclick="addComment(event)">
             Send
           </button>
@@ -55,6 +57,10 @@
 
       .name { width: 100%;};
 
+     .result { display: flex; width: 100vw; }
+
+     .comment {  width: 100vw; }
+
 
     </style>
 
@@ -84,7 +90,8 @@
 
 
         img.src = imageUrl;
-        img.style.height = "100px";
+        img.style.height = "70px";
+    
 
         commentTextWrap.innerHTML = commentText;
         author.innerHTML = commentAuthor;
@@ -104,6 +111,21 @@
         
       }
       
+      
+      localStorage.setItem ("name", document.getElementById("name").value);
+      localStorage.setItem ("url", document.getElementById("url").value);
+      const rmCheck = document.getElementById("rememberMe");
+
+      if (localStorage.checkbox && localStorage.checkbox !== "") {
+  rmCheck.setAttribute("checked", "checked");
+  localStorage.setItem ("name", document.getElementById("name").value);
+  localStorage.setItem ("url", document.getElementById("url").value);
+
+} else {
+  rmCheck.removeAttribute("checked");
+  document.getElementById("name").value = "";
+  document.getElementById("url").value = "";
+}
 
 
     </script>
