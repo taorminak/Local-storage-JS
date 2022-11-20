@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: beige;
+      }
+
+      .box,
+      .list {
+        margin: 1em;
+        width: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(lightyellow, darkorange);
+        border-radius: 5px;
+        padding: 1em;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+      }
+
+      img {
+        padding: 0.4em;
+        width: 100%;
+      }
+
+      textarea {
+        width: 300px;
+        height: 80px;
+        padding: 0.4em;
+        border-radius: 5px;
+        font-size: 1em;
+        resize: none;
+        margin-bottom: 0.7em;
+      }
+
+      input[type="date"] {
+        width: 150px;
+        text-align: center;
+        margin-bottom: 3em;
+      }
+
+      button {
+        width: 140px;
+        padding: 0.4em;
+        margin: 0.4em 0;
+        cursor: pointer;
+        border: none;
+        background-color: wheat;
+        border-radius: 5px;
+        font-family: inherit;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      button:active {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+      }
+
+      button:focus,
+      textarea:focus,
+      input:focus {
+        outline: none;
+      }
+
+      .note {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-style: italic;
+        user-select: none;
+        word-break: break-all;
+        position: relative;
+      }
+
+      .note p {
+        width: 240px;
+        font-size: 1em;
+      }
+
+      .note span {
+        display: block;
+        cursor: pointer;
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      .info {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img
+        src="http://ic.pics.livejournal.com/braille_teeth/4880923/244869/244869_original.jpg"
+        alt="#"
+      />
+      <p>Note text:</p>
+      <textarea></textarea>
+      <p>Notification date:</p>
+      <input type="date" pattern="\d{1,2}/\d{1,2}/\d{4}" />
+
+      <button class="add-btn" onclick="addNote()">add note</button>
+      <button class="clear-btn" onclick="clearLS()">clear storage</button>
+    </div>
+
+    <script>
+      const comments = [];
+
+      function addNote() {
+        const textarea = document.querySelector("textarea").value;
+        const dateInput = document.querySelector('input[type="date"]').value;
+        const result = textarea + ", " + dateInput;
+
+        comments.push(result);
+        document.querySelector("textarea").value = "";
+        document.querySelector('input[type="date"]').value = "";
+        console.log(comments);
+
+        saveCommentsToLS();
+      }
+
+      const saveCommentsToLS = () => {
+        const commentsString = JSON.stringify(comments);
+        localStorage.setItem("comments", commentsString);
+      };
+
+      function clearLS() {
+        localStorage.clear();
+      }
+    </script>
+  </body>
+</html>
